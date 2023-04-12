@@ -67,6 +67,20 @@ pipeline{
                     statiCodeAnalysis(SonarQubecredentialId)
                 }
             }
+        }
+
+        stage('Quality Gate Satus Check: Sonarqube') {
+
+         when { expression { params.action == 'create' } }
+
+            steps{
+
+                script{
+
+                    def SonarQubecredentialId = 'sonar-api'
+                    QualityGateStatus(SonarQubecredentialId)
+                }
+            }
         } 
 
     }
