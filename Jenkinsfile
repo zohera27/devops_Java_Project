@@ -15,7 +15,7 @@ pipeline{
 
         stage('Git Checkout') {
 
-         when { expression { param.action == 'create' } }
+         when { expression { params.action == 'create' } }
 
             steps{
 
@@ -31,7 +31,7 @@ pipeline{
 
         stage('Unit Test maven') {
 
-         when { expression { param.action == 'create' } }
+         when { expression { params.action == 'create' } }
         
             steps{
 
@@ -44,7 +44,7 @@ pipeline{
 
         stage('Integration Test maven') {
 
-         when { expression { param.action == 'create' } }
+         when { expression { params.action == 'create' } }
 
             steps{
 
@@ -57,7 +57,7 @@ pipeline{
 
         stage('Static Code Analysis: Sonarqube') {
 
-         when { expression { param.action == 'create' } }
+         when { expression { params.action == 'create' } }
 
             steps{
 
