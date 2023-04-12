@@ -1,3 +1,5 @@
+@Library('Jenkins_Shared_Library') _
+
 pipeline{
     
     agent any
@@ -10,7 +12,20 @@ pipeline{
 
                 script{
 
-                    git branch: 'main', url: 'https://github.com/zohera27/devops_Java_Project.git'
+                    gitCheckout(
+                        branch: "main"
+                        url: "https://github.com/zohera27/devops_Java_Project.git"
+                    )
+                }
+            }
+        }
+        stage('Unit Test maven') {
+
+            steps{
+
+                script{
+
+                    mvnTest()
                 }
             }
         }
