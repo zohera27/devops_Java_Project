@@ -7,9 +7,9 @@ pipeline{
     parameters{
         
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose Create/Destroy')
-        String(name: 'ImageName', description: "Name of the Docker Build", defaultValue: 'javapp')
-        String(name: 'ImageTag', description: "Tag of the Docker Build", defaultValue: 'v1')
-        String(name: 'DockerHubUser', description: "Dokcer HUB User Account", defaultValue: 'zohera27')
+        string(name: 'ImageName', description: "Name of the Docker Build", defaultValue: 'javapp')
+        string(name: 'ImageTag', description: "Tag of the Docker Build", defaultValue: 'v1')
+        string(name: 'DockerHubUser', description: "Dokcer HUB User Account", defaultValue: 'zohera27')
         
     }
 
