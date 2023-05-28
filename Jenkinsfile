@@ -88,11 +88,11 @@ pipeline{
                     sshagent(['SSHEC2']) {
                         // SSH into the Docker EC2 instance
                         // Copy the Dockerfile to the Docker EC2 instance
-                        sh "scp -o StrictHostKeyChecking=no Dockerfile ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com:/home/ubuntu/Dockerfile"
-                        sh "scp -o StrictHostKeyChecking=no -r target/ Dockerfile ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com:/home/ubuntu/"                       
+                        // sh "scp -o StrictHostKeyChecking=no Dockerfile ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com:/home/ubuntu/Dockerfile"
+                        // sh "scp -o StrictHostKeyChecking=no -r target/ Dockerfile ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com:/home/ubuntu/"                       
             
                         // SSH into the Docker EC2 instance and build the Docker image
-                        sh "ssh -o StrictHostKeyChecking=no ubuntu@ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com 'cd /home/ubuntu/ && docker image build -t ${DockerHubUser}/${ImageName}:${ImageTag} -f Dockerfile .'"
+                        sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com 'cd /home/ubuntu/ && docker image build -t ${DockerHubUser}/${ImageName}:${ImageTag} -f Dockerfile .'"
                         // sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com 'cd /path/to/dockerfile && docker image build -t ${Dockeraccount}/${ImageName}:${ImageTag} .'"
                     }   
                 }
