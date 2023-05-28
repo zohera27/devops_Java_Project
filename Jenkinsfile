@@ -77,5 +77,18 @@ pipeline{
             }
         }
 
+        stage('Docker Image Build') {
+
+         when { expression { params.action == 'create' } }
+        
+            steps{
+
+                script{
+
+                    dockerBuild("${params.ImageName}", "${params.ImageTag}", "${params.DockerHubUser}")
+                }
+            }
+        }
+
     }
 }
