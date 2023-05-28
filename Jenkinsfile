@@ -85,7 +85,7 @@ pipeline{
 
                 script{
 
-                    dockerBuild("${params.ImageName}", "${params.ImageTag}", "${params.DockerHubUser}")
+                    docker.build("${params.ImageName}", "${params.ImageTag}", "${params.DockerHubUser}")
                 }
             }
         }
