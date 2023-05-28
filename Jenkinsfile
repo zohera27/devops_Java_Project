@@ -3,13 +3,14 @@
 pipeline{
     
     agent any
-    
+
     environment{
 
         JAVA8_HOME = "${tool 'JAVA8'}"
         JAVA11_HOME = "${tool 'JAVA11'}"
         MAVEN_HOME = "${tool 'MAVEN'}"
     }
+
     parameters{
         
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose Create/Destroy')
@@ -20,7 +21,7 @@ pipeline{
     }
 
     stages{
-           
+        
         stage('Git Checkout') {
 
          when { expression { params.action == 'create' } }
@@ -29,15 +30,26 @@ pipeline{
 
                 script{
 
-                    git.gitcheckout(
+                    gitCheckout(
                         branch: "main",
                         url: "https://github.com/zohera27/devops_Java_Project.git"
                     )
                 }
             }
         }
-       
 
+        stage('Unit Test maven') {
+
+         when { expression { params.action == 'create' } }
+        
+            steps{
+
+                script{
+
+                    mvntest(JAVA8_HOME)
+                }
+            }
+        }
         
 
     }
