@@ -46,7 +46,7 @@ pipeline{
 
                 script{
 
-                    mvntest(JAVA8_HOME)
+                    mvn.mvntest(JAVA8_HOME)
                 }
             }
         }
