@@ -46,10 +46,23 @@ pipeline{
 
                 script{
 
-                    mvn.mvntest(JAVA8_HOME)
+                    mvntest(JAVA8_HOME)
                 }
             }
         }
+
+        stage('Integration Test maven') {
+
+         when { expression { params.action == 'create' } }
+
+            steps{
+
+                script{
+
+                    mvn.mvnverify()
+                }
+            }
+        }        
         
 
     }
