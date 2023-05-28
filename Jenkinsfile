@@ -46,7 +46,7 @@ pipeline{
 
                 script{
 
-                    mvntest(JAVA8_HOME)
+                    mvn.mvntest(JAVA8_HOME)
                 }
             }
         }
@@ -59,11 +59,23 @@ pipeline{
 
                 script{
 
-                    mvn.mvnverify()
+                    mvn.mvnverify(JAVA8_HOME)
                 }
             }
-        }        
+        }  
+
+        stage('Maven Build : maven') {
+
+         when { expression { params.action == 'create' } }
         
+            steps{
+
+                script{
+
+                    mvn.mvnbuild(JAVA8_HOME)
+                }
+            }
+        }
 
     }
 }
