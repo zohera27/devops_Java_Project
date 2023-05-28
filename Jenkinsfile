@@ -89,7 +89,7 @@ pipeline{
                         // SSH into the Docker EC2 instance
                         // Copy the Dockerfile to the Docker EC2 instance
                         sh "scp -o StrictHostKeyChecking=no Dockerfile ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com:/home/ubuntu/Dockerfile"
-                        sh "scp -o StrictHostKeyChecking=no -r target/* Dockerfile ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com:/home/ubuntu/"                       
+                        sh "scp -o StrictHostKeyChecking=no -r target/ Dockerfile ubuntu@ec2-54-152-159-155.compute-1.amazonaws.com:/home/ubuntu/"                       
             
                         // SSH into the Docker EC2 instance and build the Docker image
                         // sh "ssh -o StrictHostKeyChecking=no ubuntu@<DOCKER-INSTANCE-IP> 'cd /path/to && docker image build -t ${Dockeraccount}/${ImageName}:${ImageTag} -f Dockerfile .'"
