@@ -25,7 +25,7 @@ pipeline{
 
                 script{
 
-                    gitCheckout(
+                    gitcheckout(
                         branch: "main",
                         url: "https://github.com/zohera27/devops_Java_Project.git"
                     )
